@@ -25,16 +25,16 @@ You have now cloned the python template from Flipside Crypto and created a remot
 ```echo "FLIPSIDE_API_KEY=\"<insert key>\"" >> .env```
 2. Remove system dependencies from environment.yml file.
 3. Create your conda environment from environment.yml file.
-```conda env create -f environment.yml```
-
-
-6. Open miniconda and navigate to your folder `cd ...Documents/yourNewFolderName` 7. Restore the conda environment `conda env create -f environment.yml` this will use the new name you placed in the environment.yml file. 8. Activate the environment `conda activate yourEnvName` 9. Open the folder in VS Code. 10. Create & place an api_key.txt file with your key in the folder (note: ensure it is gitignored). 11. You can now run hello-flipside.py interactively (ensure you switch to your Conda yourEnvName Kernel to access the packages).
-12. Use `conda env export > environment.yml` to add new packages as you work from the template & your new repo.
+```conda env create -f environment.yml fsc-python-template```
+4. Activate your conda environment
+```conda activate fsc-python-template```
+5. If you if you install new packages be sure to add them to your environment.yml file.
+```conda env export > environment.yml```
 
 # Reproduce 
 
 1. Clone this repo. I use GitHub Desktop, you can grab the URL to clone in that app, or use `git clone https://github.com/fsc-data-science/python-template.git`
-2. Create a txt file called `api_key.txt` and place your API key (you can create one via the API page when logged into Flipside: https://flipsidecrypto.xyz/account/api-keys )
+2. Create a txt file called `.env` and place your API key (you can create one via the API page when logged into Flipside: https://flipsidecrypto.xyz/account/api-keys )
 3. Open miniconda3  and move to your cloned directory `cd YourLocationHere/python-template`
 4. In Conda create a new environment using the provided environment.yml file: `conda env create -f environment.yml` and optionally rename with `--name new_conda_name`
 
