@@ -1,24 +1,35 @@
 # python-template
  A conda based template for easy setup of reproducible repos integrating Flipside data & Python for data science.
 
- The template has been slightly modified using the GitHub CLI and a terminal to clone the repo, edit files, and initiate the repo.
+ The template has been slightly modified for using the GitHub CLI and a terminal to clone the repo, edit files, and initiate the repo.
 
 # Initializing the Repo 
 
-~10 min video review of this process available here: https://www.loom.com/share/Using-the-Python-Template-for-Reproducible-Data-Science-2c524ce317394dc7884cc8927b524910
-1. Clone the [Flipside Data Science repo](https://github.com/fsc-data-science/python-template.git)
+~10 min video review of the process using Github Desktop and GUIs available here: https://www.loom.com/share/Using-the-Python-Template-for-Reproducible-Data-Science-2c524ce317394dc7884cc8927b524910
+1. Clone the [Flipside Data Science repo](https://github.com/fsc-data-science/python-template.git) and give it your desired name.
+``` git clone https://github.com/fsc-data-science/python-template.git python-template```
 
-2. Change the folder name to your desired repo name.
-3. Inside the  `environment.yml` there is a name parameter, rename it to your desired repo name.
-4. delete the (possibly hidden) .git folder to remove the commit history.
-5. Create a git repo for this folder (e.g., using GitHub Desktop). You can keep the same gitignore, license, README as the template or replace them. But if you replace, ensure you protect your API keys.
-6. Open miniconda and navigate to your folder `cd ...Documents/yourNewFolderName`
-7. Restore the conda environment `conda env create -f environment.yml` this will use the new name you placed in the environment.yml file.
-8. Activate the environment `conda activate yourEnvName`
-9. Open the folder in VS Code.
-10. Create & place an api_key.txt file with your key in the folder (note: ensure it is gitignored).
-11. You can now run hello-flipside.py interactively (ensure you switch to your Conda yourEnvName Kernel to access the packages).
-12. Use  `conda env export > environment.yml` to add new packages as you work from the template & your new repo.
+2. delete the (possibly hidden) .git folder to remove the commit history.
+```rm -r .git```
+3. Create a git repo for the folder using Github CLI(you will need to use a flag for --public or --private).
+```gh repo create fsc-python-template --public```
+4. If the repo is created successfully it will give you the URL needed to create the remote repository, for example;
+```✓ Created repository 0xstubbs/fsc-python-template on GitHub```
+5. Add the remote repository to your GitHub account so you can push/pull.
+```git remote add origin https://github.com/0xstubbs/fsc-python-template.git
+
+You have now cloned the python template from Flipside Crypto and created a remote repository on your git account.
+
+## Configure Your Setup
+1. Create a .env file with your api key.
+```echo "FLIPSIDE_API_KEY=\"<insert key>\"" >> .env```
+2. Remove system dependencies from environment.yml file.
+3. Create your conda environment from environment.yml file.
+```conda env create -f environment.yml```
+
+
+6. Open miniconda and navigate to your folder `cd ...Documents/yourNewFolderName` 7. Restore the conda environment `conda env create -f environment.yml` this will use the new name you placed in the environment.yml file. 8. Activate the environment `conda activate yourEnvName` 9. Open the folder in VS Code. 10. Create & place an api_key.txt file with your key in the folder (note: ensure it is gitignored). 11. You can now run hello-flipside.py interactively (ensure you switch to your Conda yourEnvName Kernel to access the packages).
+12. Use `conda env export > environment.yml` to add new packages as you work from the template & your new repo.
 
 # Reproduce 
 
