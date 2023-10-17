@@ -5,7 +5,7 @@
 
 # Initializing the Repo 
 
-~10 min video review of the process using Github Desktop and GUIs available here:[Python Template For Reproducible Data Science] (https://www.loom.com/share/Using-the-Python-Template-for-Reproducible-Data-Science-2c524ce317394dc7884cc8927b524910)
+~10 min video review of the process using Github Desktop and GUIs available here: [Python Template For Reproducible Data Science](https://www.loom.com/share/Using-the-Python-Template-for-Reproducible-Data-Science-2c524ce317394dc7884cc8927b524910)
 
 1. Clone the [Flipside Data Science repo](https://github.com/fsc-data-science/python-template.git) and give it your desired name.
 
