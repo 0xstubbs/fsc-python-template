@@ -1,16 +1,18 @@
 from flipside import Flipside
 import numpy as np
-import pandas as pd 
+import pandas as pd
 import plotly.graph_objects as go
 
-""" This repo GITIGNORES api_key.txt, use this convention to store your key safely"""
+import os
+from dotenv import load_dotenv
 
-with open('api_key.txt', 'r') as file:
-    # Read the first line
-    api_key = file.readline().strip()  # .strip() removes newline characters
+""" This repo GITIGNORES api_key.txt, use this convention to store your key safely"""
+load_dotenv()
+
+FLIPSIDE_API_KEY = os.getenv("FLIPSIDE_API_KEY")
 
 """Initialize Flipside with your API Key / API Url"""
-flipside = Flipside(api_key, "https://api-v2.flipsidecrypto.xyz")
+flipside = Flipside(FLIPSIDE_API_KEY, "https://api-v2.flipsidecrypto.xyz")
 
 """ Example Query: ETH-USD Volume Weighted Average Price """
 sql = """
@@ -58,6 +60,8 @@ WHERE POOL_ADDRESS IN ( '0x8ad599c3a0ff1de082011efddc58f1908eb6e6d8', '0x88e6a0c
 query_result_set = flipside.query(sql)
 
 """This function will be added to Flipside package after testing, just copy/paste as needed for now"""
+
+
 def auto_paginate_result(query_result_set, page_size=10000):
     """
     This function auto-paginates a query result to get all the data. It assumes 10,000 rows per page.
@@ -69,9 +73,7 @@ def auto_paginate_result(query_result_set, page_size=10000):
     current_page = 1
     while current_page <= page_count:
         results = flipside.get_query_results(
-            query_result_set.query_id,
-            page_number=current_page,
-            page_size=page_size
+            query_result_set.query_id, page_number=current_page, page_size=page_size
         )
 
         if results.records:
@@ -81,6 +83,7 @@ def auto_paginate_result(query_result_set, page_size=10000):
 
     return all_rows  # Return all_rows in JSON format
 
+
 """ Get your data as a pandas data frame"""
 
 eth_vwap = auto_paginate_result(query_result_set)
@@ -88,18 +91,25 @@ eth_vwap = pd.DataFrame(eth_vwap)
 
 """ Plot Candles Data with Plotly """
 
-fig = go.Figure(data=[go.Candlestick(x=eth_vwap['hour_'],
-                open=eth_vwap['open'],
-                high=eth_vwap['high'],
-                low=eth_vwap['low'],
-                close=eth_vwap['close'])])
+fig = go.Figure(
+    data=[
+        go.Candlestick(
+            x=eth_vwap["hour_"],
+            open=eth_vwap["open"],
+            high=eth_vwap["high"],
+            low=eth_vwap["low"],
+            close=eth_vwap["close"],
+        )
+    ]
+)
 
 # Customize the layout
-fig.update_layout(title='Candlestick Chart',
-                xaxis_title='Date and Time',
-                yaxis_title='Price',
-                xaxis_rangeslider_visible=True)
+fig.update_layout(
+    title="Candlestick Chart",
+    xaxis_title="Date and Time",
+    yaxis_title="Price",
+    xaxis_rangeslider_visible=True,
+)
 
-# Save chart as html you can open in browser 
-fig.write_html('candlestick_chart.html')
-
+# Save chart as html you can open in browser
+fig.write_html("candlestick_chart.html")
