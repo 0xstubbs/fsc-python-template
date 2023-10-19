@@ -7,9 +7,9 @@
 
 ~10 min video review of the process using Github Desktop and GUIs available here: [Python Template For Reproducible Data Science](https://www.loom.com/share/Using-the-Python-Template-for-Reproducible-Data-Science-2c524ce317394dc7884cc8927b524910)
 
-1. Clone the [Flipside Data Science repo](https://github.com/fsc-data-science/python-template.git) and give it your desired name.
+1. clone the [Stubbs Python Template](https://github.com/0xstubbs/fsc-python-template.git) and give it your desired name.
 
-``` git clone https://github.com/fsc-data-science/python-template.git python-template```
+``` git clone https://github.com/0xstubbs/fsc-python-template.git python-template```
 
 2. delete the (possibly hidden) .git folder to remove the commit history.
 
@@ -23,11 +23,22 @@
 
 ```✓ Created repository 0xstubbs/fsc-python-template on GitHub```
 
-5. Add the remote repository to your GitHub account so you can push/pull.
+5. Initiate the git repository
+
+```git init```
+
+6. Add the remote repository to your GitHub account so you can push/pull.
 
 ```git remote add origin https://github.com/0xstubbs/fsc-python-template.git```
 
-You have now cloned the python template from Flipside Crypto and created a remote repository on your git account.
+7. Do your initial commit and push to the server.
+
+```
+git commit -m "Initial Commit"
+git push -u origin master
+```
+
+You now have a new git repository ready to go. Be sure to update the README.md for your repo.
 
 ## Configure Your Setup
 
